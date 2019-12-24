@@ -8,7 +8,7 @@ apply plugin: 'maven'
 //    PUBLISH_VERSION = android.defaultConfig.versionName
 //}
 
-def PUBLISH_URL = 'http://60.205.161.208:8081/repository/maven-releases/'
+def PUBLISH_URL = '这些参数不能对外发布'
 
 def PUBLISH_GROUP_ID = 'com.hhmedic.android.sdk'
 
@@ -23,7 +23,7 @@ uploadArchives {
     repositories{
         mavenDeployer{
             repository(url: PUBLISH_URL) {
-                authentication(userName: "hh-user", password: "hi9rqvdR")
+                authentication(userName: "这些参数不能对外发布", password: "这些参数不能对外发布")
             }
 
             pom.groupId = PUBLISH_GROUP_ID
