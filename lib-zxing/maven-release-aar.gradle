@@ -1,0 +1,43 @@
+// 1.maven-插件
+apply plugin: 'maven'
+
+// 2.maven-信息
+//ext {// ext is a gradle closure allowing the declaration of global properties
+//    PUBLISH_GROUP_ID = 'com.hhmedic.android.sdk'
+//    PUBLISH_ARTIFACT_ID = 'nim'
+//    PUBLISH_VERSION = android.defaultConfig.versionName
+//}
+
+def PUBLISH_URL = 'http://60.205.161.208:8081/repository/maven-releases/'
+
+def PUBLISH_GROUP_ID = 'com.hhmedic.android.sdk'
+
+def PUBLISH_ARTIFACT_ID = "zxing"
+
+def PUBLISH_VERSION = android.defaultConfig.versionName
+
+
+// 3.maven-输出路径
+uploadArchives {
+
+    repositories{
+        mavenDeployer{
+            repository(url: PUBLISH_URL) {
+                authentication(userName: "hh-user", password: "hi9rqvdR")
+            }
+
+            pom.groupId = PUBLISH_GROUP_ID
+            pom.artifactId = PUBLISH_ARTIFACT_ID
+            pom.version = PUBLISH_VERSION
+
+            pom.project {
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+            }
+        }
+    }
+}
